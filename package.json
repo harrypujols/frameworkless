@@ -1,0 +1,21 @@
+{
+  "name": "frameworkless",
+  "version": "1.0.0",
+  "description": "frameworkless framework",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "author": "Harry Pujols",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "webpack-stream": "^4.0.0"
+  }
+}
