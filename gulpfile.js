@@ -1,5 +1,6 @@
 var gulp        = require('gulp'),
     sass        = require('gulp-sass'),
+    glob        = require('gulp-sass-glob'),
     webpack     = require('webpack-stream'),
     browsersync = require('browser-sync').create();
 
@@ -30,6 +31,7 @@ var gulp        = require('gulp'),
 
     gulp.task('sass', ()=> {
        return gulp.src('./sass/*.scss')
+              .pipe(glob())
               .pipe(sass())
               .pipe(gulp.dest('./css'))
               .pipe(browsersync.stream());
