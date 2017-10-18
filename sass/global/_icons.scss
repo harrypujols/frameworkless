@@ -1,0 +1,39 @@
+/* Icons
+   ========================================================================== */
+
+%icon-base {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+  }
+}
+
+.icon-arrow-left,
+%icon-arrow-left {
+  @extend %icon-base;
+
+  &:after {
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    transform: rotate(45deg);
+  }
+}
+
+.icon-arrow-right,
+%icon-arrow-right {
+  @extend %icon-base;
+
+  &:after {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    transform: rotate(-45deg);
+  }
+}

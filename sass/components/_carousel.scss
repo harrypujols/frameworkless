@@ -1,3 +1,6 @@
+/* Carousel
+   ========================================================================== */
+
 .carousel {
   width: 25vw;
   overflow: hidden;
@@ -12,4 +15,14 @@
 
 .carousel-item {
   flex-grow: 1;
+}
+
+.carousel-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.carousel-button {
+  display: inline-block;
 }

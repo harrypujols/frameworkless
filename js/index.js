@@ -11,10 +11,34 @@
     carousel : class {
       constructor ( ) {
         this.carousel = APP.component.js( 'carousel' )
+        this.right
+        this.left
+        this.items
+        this.index = 0
+      }
+
+      next ( ) {
+        this.right.addEventListener('click', ( event ) => {
+          event.preventDefault()
+          alert('next')
+        })
+      }
+
+      prev ( ) {
+        this.left.addEventListener('click', ( event ) => {
+          event.preventDefault()
+          alert('prev')
+        })
       }
 
       init ( ) {
-        console.log ( this.carousel )
+        this.carousel.forEach(( carousel ) => {
+          this.right = carousel.querySelector('[data-btn=next]')
+          this.left = carousel.querySelector('[data-btn=prev]')
+          this.items = carousel.querySelectorAll('.carousel-item')
+          this.next()
+          this.prev()
+        })
       }
     },
 

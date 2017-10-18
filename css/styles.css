@@ -1,3 +1,27 @@
+/* Icons
+   ========================================================================== */
+.icon-arrow-left, .icon-arrow-right {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px; }
+  .icon-arrow-left:after, .icon-arrow-right:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 10px; }
+
+.icon-arrow-left:after {
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  transform: rotate(45deg); }
+
+.icon-arrow-right:after {
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  transform: rotate(-45deg); }
+
 body {
   font-family: sans-serif; }
 
@@ -5,6 +29,8 @@ svg {
   width: 100%;
   height: 100%; }
 
+/* Carousel
+   ========================================================================== */
 .carousel {
   width: 25vw;
   overflow: hidden; }
@@ -17,6 +43,14 @@ svg {
 
 .carousel-item {
   flex-grow: 1; }
+
+.carousel-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px; }
+
+.carousel-button {
+  display: inline-block; }
 
 .svg-include {
   width: 100px;

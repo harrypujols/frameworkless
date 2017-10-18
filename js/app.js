@@ -89,12 +89,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, carousel);
 
         this.carousel = APP.component.js('carousel');
+        this.right;
+        this.left;
+        this.items;
+        this.index = 0;
       }
 
       _createClass(carousel, [{
+        key: 'next',
+        value: function next() {
+          this.right.addEventListener('click', function (event) {
+            event.preventDefault();
+            alert('next');
+          });
+        }
+      }, {
+        key: 'prev',
+        value: function prev() {
+          this.left.addEventListener('click', function (event) {
+            event.preventDefault();
+            alert('prev');
+          });
+        }
+      }, {
         key: 'init',
         value: function init() {
-          console.log(this.carousel);
+          var _this = this;
+
+          this.carousel.forEach(function (carousel) {
+            _this.right = carousel.querySelector('[data-btn=next]');
+            _this.left = carousel.querySelector('[data-btn=prev]');
+            _this.items = carousel.querySelectorAll('.carousel-item');
+            _this.next();
+            _this.prev();
+          });
         }
       }]);
 
@@ -111,10 +139,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(svg, [{
         key: 'importer',
         value: function importer() {
-          var _this = this;
+          var _this2 = this;
 
           this.element.forEach(function (element) {
-            _this.fetcher(element, element.dataset.svg);
+            _this2.fetcher(element, element.dataset.svg);
           });
         }
       }, {
