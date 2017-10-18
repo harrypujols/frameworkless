@@ -78,20 +78,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   var APP = APP || {};
 
   APP.component = {
-    init: function () {
-      function init() {
-        _classCallCheck(this, init);
-      }
-
-      _createClass(init, [{
-        key: 'js',
-        value: function js(el) {
-          return document.querySelectorAll('[data-js=' + el + ']');
-        }
-      }]);
-
-      return init;
-    }()
+    js: function js(el) {
+      return document.querySelectorAll('[data-js=' + el + ']');
+    }
   };
 
   APP.methods = {
@@ -99,8 +88,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function carousel() {
         _classCallCheck(this, carousel);
 
-        this.component = new APP.component.init();
-        this.carousel = this.component.js('carousel');
+        this.carousel = APP.component.js('carousel');
       }
 
       _createClass(carousel, [{

@@ -2,18 +2,15 @@
   var APP = APP || {}
 
   APP.component = {
-    init : class {
-      js ( el ) {
-         return document.querySelectorAll('[data-js=' + el + ']')
-      }
+    js : ( el ) => {
+      return document.querySelectorAll('[data-js=' + el + ']')
     }
   }
 
   APP.methods = {
     carousel : class {
       constructor ( ) {
-        this.component = new APP.component.init
-        this.carousel = this.component.js( 'carousel' )
+        this.carousel = APP.component.js( 'carousel' )
       }
 
       init ( ) {
