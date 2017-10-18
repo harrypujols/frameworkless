@@ -20,14 +20,26 @@
       next ( ) {
         this.right.addEventListener('click', ( event ) => {
           event.preventDefault()
-          alert('next')
+          this.index++
+
+          if ( this.index >= this.items.length ) {
+            this.index = this.items.length -1
+          }
+
+          console.log( this.index )
+
+          this.items[this.index].scrollIntoView({block: 'end',  behaviour: 'smooth'})
         })
       }
 
       prev ( ) {
         this.left.addEventListener('click', ( event ) => {
           event.preventDefault()
-          alert('prev')
+          this.index--
+          if ( this.index < 0  ) {
+            this.index = 0
+          }
+          this.items[this.index].scrollIntoView({block: 'end',  behaviour: 'smooth'})
         })
       }
 

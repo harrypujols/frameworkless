@@ -98,30 +98,46 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(carousel, [{
         key: 'next',
         value: function next() {
+          var _this = this;
+
           this.right.addEventListener('click', function (event) {
             event.preventDefault();
-            alert('next');
+            _this.index++;
+
+            if (_this.index >= _this.items.length) {
+              _this.index = _this.items.length - 1;
+            }
+
+            console.log(_this.index);
+
+            _this.items[_this.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
           });
         }
       }, {
         key: 'prev',
         value: function prev() {
+          var _this2 = this;
+
           this.left.addEventListener('click', function (event) {
             event.preventDefault();
-            alert('prev');
+            _this2.index--;
+            if (_this2.index < 0) {
+              _this2.index = 0;
+            }
+            _this2.items[_this2.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
           });
         }
       }, {
         key: 'init',
         value: function init() {
-          var _this = this;
+          var _this3 = this;
 
           this.carousel.forEach(function (carousel) {
-            _this.right = carousel.querySelector('[data-btn=next]');
-            _this.left = carousel.querySelector('[data-btn=prev]');
-            _this.items = carousel.querySelectorAll('.carousel-item');
-            _this.next();
-            _this.prev();
+            _this3.right = carousel.querySelector('[data-btn=next]');
+            _this3.left = carousel.querySelector('[data-btn=prev]');
+            _this3.items = carousel.querySelectorAll('.carousel-item');
+            _this3.next();
+            _this3.prev();
           });
         }
       }]);
@@ -139,10 +155,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(svg, [{
         key: 'importer',
         value: function importer() {
-          var _this2 = this;
+          var _this4 = this;
 
           this.element.forEach(function (element) {
-            _this2.fetcher(element, element.dataset.svg);
+            _this4.fetcher(element, element.dataset.svg);
           });
         }
       }, {

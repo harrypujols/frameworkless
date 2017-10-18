@@ -1,7 +1,12 @@
 /* Carousel
    ========================================================================== */
-
 .carousel {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.carousel-inner {
   width: 25vw;
   overflow: hidden;
 }
