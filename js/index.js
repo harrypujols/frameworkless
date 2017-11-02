@@ -1,5 +1,8 @@
 const FRAMEWORK = FRAMEWORK || {};
 
+import components from './methods/components'
+import templates from './methods/templates'
+
 import carousel from './components/carousel'
 import include from './components/include'
 
@@ -25,32 +28,8 @@ import include from './components/include'
   }
 
   APP.methods = {
-    components : () => {
-      let components = document.querySelectorAll('[data-js]')
-      components.forEach(( component ) => {
-        Object.entries( APP.components ).forEach(( entry ) => {
-          let key = entry[0]
-          let value = entry[1]
-          if ( key == component.dataset.js ) {
-            let directive = new value( component, APP )
-            directive.init()
-          }
-        })
-      })
-    },
-
-    templates : () => {
-      let elements = document.querySelectorAll('[data-template]')
-      elements.forEach((element) => {
-        Object.entries( APP.templates ).forEach(( entry ) => {
-          let key = entry[0]
-          let value = entry[1]
-          if ( key == element.dataset.template ) {
-            element.innerHTML = value()
-          }
-        })
-      })
-    }
+    components : components,
+    templates : templates
   }
 
   APP.components = {
@@ -58,9 +37,9 @@ import include from './components/include'
     include : include
   }
 
-  document.addEventListener("DOMContentLoaded", (event) => {
-    APP.methods.components()
-    APP.methods.templates()
+  document.addEventListener('DOMContentLoaded', (event) => {
+    APP.methods.components( APP )
+    APP.methods.templates( APP )
   })
 
 })( window, FRAMEWORK, undefined )

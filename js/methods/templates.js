@@ -1,4 +1,4 @@
-export default () => {
+export default ( APP ) => {
   let elements = document.querySelectorAll('[data-template]')
   elements.forEach((element) => {
     Object.entries( APP.templates ).forEach(( entry ) => {

@@ -70,11 +70,19 @@
 "use strict";
 
 
-var _carousel = __webpack_require__(1);
+var _components = __webpack_require__(1);
+
+var _components2 = _interopRequireDefault(_components);
+
+var _templates = __webpack_require__(2);
+
+var _templates2 = _interopRequireDefault(_templates);
+
+var _carousel = __webpack_require__(3);
 
 var _carousel2 = _interopRequireDefault(_carousel);
 
-var _include = __webpack_require__(2);
+var _include = __webpack_require__(4);
 
 var _include2 = _interopRequireDefault(_include);
 
@@ -104,32 +112,8 @@ var FRAMEWORK = FRAMEWORK || {};
   };
 
   APP.methods = {
-    components: function components() {
-      var components = document.querySelectorAll('[data-js]');
-      components.forEach(function (component) {
-        Object.entries(APP.components).forEach(function (entry) {
-          var key = entry[0];
-          var value = entry[1];
-          if (key == component.dataset.js) {
-            var directive = new value(component, APP);
-            directive.init();
-          }
-        });
-      });
-    },
-
-    templates: function templates() {
-      var elements = document.querySelectorAll('[data-template]');
-      elements.forEach(function (element) {
-        Object.entries(APP.templates).forEach(function (entry) {
-          var key = entry[0];
-          var value = entry[1];
-          if (key == element.dataset.template) {
-            element.innerHTML = value();
-          }
-        });
-      });
-    }
+    components: _components2.default,
+    templates: _templates2.default
   };
 
   APP.components = {
@@ -137,14 +121,63 @@ var FRAMEWORK = FRAMEWORK || {};
     include: _include2.default
   };
 
-  document.addEventListener("DOMContentLoaded", function (event) {
-    APP.methods.components();
-    APP.methods.templates();
+  document.addEventListener('DOMContentLoaded', function (event) {
+    APP.methods.components(APP);
+    APP.methods.templates(APP);
   });
 })(window, FRAMEWORK, undefined);
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (APP) {
+  var components = document.querySelectorAll('[data-js]');
+  components.forEach(function (component) {
+    Object.entries(APP.components).forEach(function (entry) {
+      var key = entry[0];
+      var value = entry[1];
+      if (key == component.dataset.js) {
+        var directive = new value(component, APP);
+        directive.init();
+      }
+    });
+  });
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (APP) {
+  var elements = document.querySelectorAll('[data-template]');
+  elements.forEach(function (element) {
+    Object.entries(APP.templates).forEach(function (entry) {
+      var key = entry[0];
+      var value = entry[1];
+      if (key == element.dataset.template) {
+        element.innerHTML = value();
+      }
+    });
+  });
+};
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -211,7 +244,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
