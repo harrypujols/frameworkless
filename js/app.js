@@ -102,13 +102,46 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function carousel(element) {
         _classCallCheck(this, carousel);
 
-        this.element = element;
+        this.carousel = element;
+        this.next = this.carousel.querySelector('[data-btn=next]');
+        this.prev = this.carousel.querySelector('[data-btn=prev]');
+        this.items = this.carousel.querySelectorAll('.carousel-item');
+        this.index = 0;
       }
 
       _createClass(carousel, [{
+        key: 'clickPrev',
+        value: function clickPrev() {
+          var _this = this;
+
+          this.prev.addEventListener('click', function (event) {
+            event.preventDefault();
+            _this.index--;
+            if (_this.index < 0) {
+              _this.index = 0;
+            }
+            _this.items[_this.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
+          });
+        }
+      }, {
+        key: 'clickNext',
+        value: function clickNext() {
+          var _this2 = this;
+
+          this.next.addEventListener('click', function (event) {
+            event.preventDefault();
+            _this2.index++;
+            if (_this2.index >= _this2.items.length) {
+              _this2.index = _this2.items.length - 1;
+            }
+            _this2.items[_this2.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
+          });
+        }
+      }, {
         key: 'init',
         value: function init() {
-          console.log(this.element);
+          this.clickPrev();
+          this.clickNext();
         }
       }]);
 
@@ -126,12 +159,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(svg, [{
         key: 'init',
         value: function init() {
-          var _this = this;
+          var _this3 = this;
 
           fetch(this.file).then(function (response) {
             return response.text();
           }).then(function (text) {
-            _this.element.innerHTML = text;
+            _this3.element.innerHTML = text;
           }).catch(console.error.bind(console));
         }
       }]);
