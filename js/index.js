@@ -1,24 +1,17 @@
 (( ) => {
   var APP = APP || {}
 
-  APP.helpers = {
-
-  }
-
   APP.components = {
     js : () => {
       let components = document.querySelectorAll('[data-js]')
       components.forEach(( component ) => {
-
         Object.entries( APP.methods ).forEach(( entry ) => {
           let key = entry[0]
           let value = entry[1]
-
           if ( key == component.dataset.js ) {
             let method = new value( component )
             method.init()
           }
-
         })
       })
     }
@@ -62,7 +55,7 @@
       }
     },
 
-    svg : class {
+    include : class {
       constructor ( element ) {
         this.element = element
         this.file = this.element.dataset.file

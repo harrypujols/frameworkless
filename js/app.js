@@ -77,17 +77,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function () {
   var APP = APP || {};
 
-  APP.helpers = {};
-
   APP.components = {
     js: function js() {
       var components = document.querySelectorAll('[data-js]');
       components.forEach(function (component) {
-
         Object.entries(APP.methods).forEach(function (entry) {
           var key = entry[0];
           var value = entry[1];
-
           if (key == component.dataset.js) {
             var method = new value(component);
             method.init();
@@ -148,15 +144,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return carousel;
     }(),
 
-    svg: function () {
-      function svg(element) {
-        _classCallCheck(this, svg);
+    include: function () {
+      function include(element) {
+        _classCallCheck(this, include);
 
         this.element = element;
         this.file = this.element.dataset.file;
       }
 
-      _createClass(svg, [{
+      _createClass(include, [{
         key: 'init',
         value: function init() {
           var _this3 = this;
@@ -169,7 +165,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }]);
 
-      return svg;
+      return include;
     }()
   };
 
