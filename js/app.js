@@ -83,7 +83,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   };
 
   APP.templates = {
-    hello: 'Hello, ' + APP.data.hello + '.'
+    hello: function hello() {
+      return 'Hello, ' + APP.data.hello + '.';
+    },
+
+    fruits: function fruits() {
+      var items = [];
+      APP.data.fruits.forEach(function (fruit) {
+        items.push('<li> ' + fruit + ' </li>');
+      });
+      return items.join('');
+    }
   };
 
   APP.methods = {
@@ -108,7 +118,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var key = entry[0];
           var value = entry[1];
           if (key == element.dataset.template) {
-            element.innerHTML = value;
+            element.innerHTML = value();
           }
         });
       });

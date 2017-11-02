@@ -7,7 +7,17 @@
   }
 
   APP.templates = {
-    hello : `Hello, ${ APP.data.hello }.`
+    hello : () => {
+      return `Hello, ${ APP.data.hello }.`
+    },
+
+    fruits : () => {
+      var items = []
+      APP.data.fruits.forEach(( fruit ) => {
+        items.push(`<li> ${ fruit } </li>`)
+      })
+      return items.join('')
+    }
   }
 
   APP.methods = {
@@ -32,7 +42,7 @@
           let key = entry[0]
           let value = entry[1]
           if ( key == element.dataset.template ) {
-            element.innerHTML = value
+            element.innerHTML = value()
           }
         })
       })
