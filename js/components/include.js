@@ -12,4 +12,4 @@ export default class {
     })
     .catch(console.error.bind( console ))
   }
-} 
+}

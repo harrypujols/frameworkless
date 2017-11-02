@@ -70,9 +70,15 @@
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _carousel = __webpack_require__(1);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _carousel2 = _interopRequireDefault(_carousel);
+
+var _include = __webpack_require__(2);
+
+var _include2 = _interopRequireDefault(_include);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FRAMEWORK = FRAMEWORK || {};
 
@@ -105,7 +111,7 @@ var FRAMEWORK = FRAMEWORK || {};
           var key = entry[0];
           var value = entry[1];
           if (key == component.dataset.js) {
-            var directive = new value(component);
+            var directive = new value(component, APP);
             directive.init();
           }
         });
@@ -127,79 +133,8 @@ var FRAMEWORK = FRAMEWORK || {};
   };
 
   APP.components = {
-    carousel: function () {
-      function carousel(element) {
-        _classCallCheck(this, carousel);
-
-        this.carousel = element;
-        this.next = this.carousel.querySelector('[data-btn=next]');
-        this.prev = this.carousel.querySelector('[data-btn=prev]');
-        this.items = this.carousel.querySelectorAll('.carousel-item');
-        this.index = 0;
-      }
-
-      _createClass(carousel, [{
-        key: 'clickPrev',
-        value: function clickPrev() {
-          var _this = this;
-
-          this.prev.addEventListener('click', function (event) {
-            event.preventDefault();
-            _this.index--;
-            if (_this.index < 0) {
-              _this.index = 0;
-            }
-            _this.items[_this.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
-          });
-        }
-      }, {
-        key: 'clickNext',
-        value: function clickNext() {
-          var _this2 = this;
-
-          this.next.addEventListener('click', function (event) {
-            event.preventDefault();
-            _this2.index++;
-            if (_this2.index >= _this2.items.length) {
-              _this2.index = _this2.items.length - 1;
-            }
-            _this2.items[_this2.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
-          });
-        }
-      }, {
-        key: 'init',
-        value: function init() {
-          this.clickPrev();
-          this.clickNext();
-        }
-      }]);
-
-      return carousel;
-    }(),
-
-    include: function () {
-      function include(element) {
-        _classCallCheck(this, include);
-
-        this.element = element;
-        this.file = this.element.dataset.file;
-      }
-
-      _createClass(include, [{
-        key: 'init',
-        value: function init() {
-          var _this3 = this;
-
-          fetch(this.file).then(function (response) {
-            return response.text();
-          }).then(function (text) {
-            _this3.element.innerHTML = text;
-          }).catch(console.error.bind(console));
-        }
-      }]);
-
-      return include;
-    }()
+    carousel: _carousel2.default,
+    include: _include2.default
   };
 
   document.addEventListener("DOMContentLoaded", function (event) {
@@ -207,6 +142,114 @@ var FRAMEWORK = FRAMEWORK || {};
     APP.methods.templates();
   });
 })(window, FRAMEWORK, undefined);
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _class = function () {
+  function _class(element) {
+    _classCallCheck(this, _class);
+
+    this.carousel = element;
+    this.next = this.carousel.querySelector('[data-btn=next]');
+    this.prev = this.carousel.querySelector('[data-btn=prev]');
+    this.items = this.carousel.querySelectorAll('.carousel-item');
+    this.index = 0;
+  }
+
+  _createClass(_class, [{
+    key: 'clickPrev',
+    value: function clickPrev() {
+      var _this = this;
+
+      this.prev.addEventListener('click', function (event) {
+        event.preventDefault();
+        _this.index--;
+        if (_this.index < 0) {
+          _this.index = 0;
+        }
+        _this.items[_this.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
+      });
+    }
+  }, {
+    key: 'clickNext',
+    value: function clickNext() {
+      var _this2 = this;
+
+      this.next.addEventListener('click', function (event) {
+        event.preventDefault();
+        _this2.index++;
+        if (_this2.index >= _this2.items.length) {
+          _this2.index = _this2.items.length - 1;
+        }
+        _this2.items[_this2.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
+      });
+    }
+  }, {
+    key: 'init',
+    value: function init() {
+      this.clickPrev();
+      this.clickNext();
+    }
+  }]);
+
+  return _class;
+}();
+
+exports.default = _class;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _class = function () {
+  function _class(element) {
+    _classCallCheck(this, _class);
+
+    this.element = element;
+    this.file = this.element.dataset.file;
+  }
+
+  _createClass(_class, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
+
+      fetch(this.file).then(function (response) {
+        return response.text();
+      }).then(function (text) {
+        _this.element.innerHTML = text;
+      }).catch(console.error.bind(console));
+    }
+  }]);
+
+  return _class;
+}();
+
+exports.default = _class;
 
 /***/ })
 /******/ ]);
