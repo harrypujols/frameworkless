@@ -138,13 +138,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return svg;
     }()
+  };
 
-    // Object.values( APP.methods ).forEach(( method ) => {
-    //   let execute = new method
-    //   execute.init()
-    // })
-
-  };APP.components.js();
+  APP.components.js();
 })();
 
 /***/ })
