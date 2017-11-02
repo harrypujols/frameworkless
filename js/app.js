@@ -213,7 +213,7 @@ var _class = function () {
         if (_this.index < 0) {
           _this.index = 0;
         }
-        _this.items[_this.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
+        _this.items[_this.index].scrollIntoView({ block: 'end', behavior: 'smooth' });
       });
     }
   }, {
@@ -227,7 +227,7 @@ var _class = function () {
         if (_this2.index >= _this2.items.length) {
           _this2.index = _this2.items.length - 1;
         }
-        _this2.items[_this2.index].scrollIntoView({ block: 'end', behaviour: 'smooth' });
+        _this2.items[_this2.index].scrollIntoView({ block: 'end', behavior: 'smooth' });
       });
     }
   }, {

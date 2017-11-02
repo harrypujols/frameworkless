@@ -1,4 +1,4 @@
-const FRAMEWORK = FRAMEWORK || {};
+const FRAMEWORK = FRAMEWORK || {}
 
 import components from './methods/components'
 import templates from './methods/templates'

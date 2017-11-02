@@ -14,7 +14,7 @@ export default class {
       if ( this.index < 0  ) {
         this.index = 0
       }
-      this.items[this.index].scrollIntoView({block: 'end',  behaviour: 'smooth'})
+      this.items[this.index].scrollIntoView({block: 'end',  behavior: 'smooth'})
     })
   }
 
@@ -25,7 +25,7 @@ export default class {
       if ( this.index >= this.items.length ) {
         this.index = this.items.length -1
       }
-      this.items[this.index].scrollIntoView({block: 'end',  behaviour: 'smooth'})
+      this.items[this.index].scrollIntoView({block: 'end',  behavior: 'smooth'})
     })
   }
 
