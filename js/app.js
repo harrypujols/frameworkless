@@ -77,6 +77,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function () {
   var APP = APP || {};
 
+  APP.data = {
+    hello: 'world',
+    fruits: ['banana', 'apple', 'orange', 'pear', 'pineapple']
+  };
+
+  APP.templates = {
+    hello: 'Hello, ' + APP.data.hello + '.'
+  };
+
   APP.methods = {
     components: function components() {
       var components = document.querySelectorAll('[data-js]');
@@ -87,6 +96,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (key == component.dataset.js) {
             var directive = new value(component);
             directive.init();
+          }
+        });
+      });
+    },
+
+    templates: function templates() {
+      var elements = document.querySelectorAll('[data-template]');
+      elements.forEach(function (element) {
+        Object.entries(APP.templates).forEach(function (entry) {
+          var key = entry[0];
+          var value = entry[1];
+          if (key == element.dataset.template) {
+            element.innerHTML = value;
           }
         });
       });
@@ -170,6 +192,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   };
 
   APP.methods.components();
+  APP.methods.templates();
 })();
 
 /***/ })

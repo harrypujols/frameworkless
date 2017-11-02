@@ -1,5 +1,14 @@
 (( ) => {
-  var APP = APP || {}
+  const APP = APP || {}
+
+  APP.data = {
+    hello : 'world',
+    fruits : ['banana', 'apple', 'orange', 'pear', 'pineapple']
+  }
+
+  APP.templates = {
+    hello : `Hello, ${ APP.data.hello }.`
+  }
 
   APP.methods = {
     components : () => {
@@ -11,6 +20,19 @@
           if ( key == component.dataset.js ) {
             let directive = new value( component )
             directive.init()
+          }
+        })
+      })
+    },
+
+    templates : () => {
+      let elements = document.querySelectorAll('[data-template]')
+      elements.forEach((element) => {
+        Object.entries( APP.templates ).forEach(( entry ) => {
+          let key = entry[0]
+          let value = entry[1]
+          if ( key == element.dataset.template ) {
+            element.innerHTML = value
           }
         })
       })
@@ -73,5 +95,6 @@
   }
 
   APP.methods.components()
+  APP.methods.templates()
 
 })( )
