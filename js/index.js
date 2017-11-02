@@ -1,39 +1,41 @@
 (( ) => {
   var APP = APP || {}
 
-  APP.component = {
-    js : ( el ) => {
-      return document.querySelectorAll('[data-js=' + el + ']')
+  APP.helpers = {
+
+  }
+
+  APP.components = {
+    js : () => {
+      let components = document.querySelectorAll('[data-js]')
+      components.forEach(( component ) => {
+
+        Object.entries( APP.methods ).forEach(( entry ) => {
+          let key = entry[0]
+          let value = entry[1]
+
+          if ( key == component.dataset.js ) {
+            let method = new value( component )
+            method.init()
+          }
+
+        })
+      })
     }
   }
 
   APP.methods = {
     carousel : class {
-      constructor ( ) {
-        this.carousel = APP.component.js( 'carousel' )
-        this.right
-        this.left
-        this.items
-        this.index = 0
+      constructor ( element ) {
+        this.carousel = element
+        this.next = this.carousel.querySelector('[data-btn=next]')
+        this.prev = this.carousel.querySelector('[data-btn=prev]')
+        this.items = this.carousel.querySelectorAll('.carousel-item')
+        this.index = 0;
       }
 
-      next ( ) {
-        this.right.addEventListener('click', ( event ) => {
-          event.preventDefault()
-          this.index++
-
-          if ( this.index >= this.items.length ) {
-            this.index = this.items.length -1
-          }
-
-          console.log( this.index )
-
-          this.items[this.index].scrollIntoView({block: 'end',  behaviour: 'smooth'})
-        })
-      }
-
-      prev ( ) {
-        this.left.addEventListener('click', ( event ) => {
+      clickPrev ( ) {
+        this.prev.addEventListener('click', ( event ) => {
           event.preventDefault()
           this.index--
           if ( this.index < 0  ) {
@@ -43,46 +45,40 @@
         })
       }
 
-      init ( ) {
-        this.carousel.forEach(( carousel ) => {
-          this.right = carousel.querySelector('[data-btn=next]')
-          this.left = carousel.querySelector('[data-btn=prev]')
-          this.items = carousel.querySelectorAll('.carousel-item')
-          this.next()
-          this.prev()
+      clickNext ( ) {
+        this.next.addEventListener('click', ( event ) => {
+          event.preventDefault()
+          this.index++
+          if ( this.index >= this.items.length ) {
+            this.index = this.items.length -1
+          }
+          this.items[this.index].scrollIntoView({block: 'end',  behaviour: 'smooth'})
         })
+      }
+
+      init ( ) {
+        this.clickPrev()
+        this.clickNext()
       }
     },
 
     svg : class {
-      constructor ( ) {
-        this.element = document.querySelectorAll('[data-svg]')
-      }
-
-      importer ( ) {
-        this.element.forEach(( element ) => {
-          this.fetcher ( element, element.dataset.svg )
-        })
-      }
-
-      fetcher ( element, file ) {
-        fetch( file )
-        .then( response => response.text() )
-        .then( text => {
-          element.innerHTML = text
-        })
-        .catch(console.error.bind( console ))
+      constructor ( element ) {
+        this.element = element
+        this.file = this.element.dataset.file
       }
 
       init ( ) {
-        this.importer()
+        fetch( this.file )
+        .then( response => response.text() )
+        .then( text => {
+          this.element.innerHTML = text
+        })
+        .catch(console.error.bind( console ))
       }
     }
   }
 
-  Object.values( APP.methods ).forEach(( method ) => {
-    let execute = new method
-    execute.init()
-  })
+  APP.components.js()
 
 })( )
