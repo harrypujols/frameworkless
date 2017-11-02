@@ -77,23 +77,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function () {
   var APP = APP || {};
 
-  APP.components = {
-    js: function js() {
+  APP.methods = {
+    components: function components() {
       var components = document.querySelectorAll('[data-js]');
       components.forEach(function (component) {
-        Object.entries(APP.methods).forEach(function (entry) {
+        Object.entries(APP.components).forEach(function (entry) {
           var key = entry[0];
           var value = entry[1];
           if (key == component.dataset.js) {
-            var method = new value(component);
-            method.init();
+            var directive = new value(component);
+            directive.init();
           }
         });
       });
     }
   };
 
-  APP.methods = {
+  APP.components = {
     carousel: function () {
       function carousel(element) {
         _classCallCheck(this, carousel);
@@ -169,7 +169,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }()
   };
 
-  APP.components.js();
+  APP.methods.components();
 })();
 
 /***/ })

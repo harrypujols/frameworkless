@@ -1,23 +1,23 @@
 (( ) => {
   var APP = APP || {}
 
-  APP.components = {
-    js : () => {
+  APP.methods = {
+    components : () => {
       let components = document.querySelectorAll('[data-js]')
       components.forEach(( component ) => {
-        Object.entries( APP.methods ).forEach(( entry ) => {
+        Object.entries( APP.components ).forEach(( entry ) => {
           let key = entry[0]
           let value = entry[1]
           if ( key == component.dataset.js ) {
-            let method = new value( component )
-            method.init()
+            let directive = new value( component )
+            directive.init()
           }
         })
       })
     }
   }
 
-  APP.methods = {
+  APP.components = {
     carousel : class {
       constructor ( element ) {
         this.carousel = element
@@ -72,6 +72,6 @@
     }
   }
 
-  APP.components.js()
+  APP.methods.components()
 
 })( )
