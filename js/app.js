@@ -70,6 +70,8 @@
 "use strict";
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (function () {
@@ -87,8 +89,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var value = entry[1];
 
           if (key == component.dataset.js) {
-            var method = new value();
-            console.log(method);
+            var method = new value(component);
+            method.init();
           }
         });
       });
@@ -96,13 +98,46 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   };
 
   APP.methods = {
-    carousel: function carousel() {
-      _classCallCheck(this, carousel);
-    },
+    carousel: function () {
+      function carousel(element) {
+        _classCallCheck(this, carousel);
 
-    svg: function svg() {
-      _classCallCheck(this, svg);
-    }
+        this.element = element;
+      }
+
+      _createClass(carousel, [{
+        key: 'init',
+        value: function init() {
+          console.log(this.element);
+        }
+      }]);
+
+      return carousel;
+    }(),
+
+    svg: function () {
+      function svg(element) {
+        _classCallCheck(this, svg);
+
+        this.element = element;
+        this.file = this.element.dataset.file;
+      }
+
+      _createClass(svg, [{
+        key: 'init',
+        value: function init() {
+          var _this = this;
+
+          fetch(this.file).then(function (response) {
+            return response.text();
+          }).then(function (text) {
+            _this.element.innerHTML = text;
+          }).catch(console.error.bind(console));
+        }
+      }]);
+
+      return svg;
+    }()
 
     // Object.values( APP.methods ).forEach(( method ) => {
     //   let execute = new method
