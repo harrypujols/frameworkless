@@ -74,8 +74,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-(function () {
-  var APP = APP || {};
+var FRAMEWORK = FRAMEWORK || {};
+
+(function (window, APP) {
 
   APP.data = {
     hello: 'world',
@@ -201,9 +202,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }()
   };
 
-  APP.methods.components();
-  APP.methods.templates();
-})();
+  document.addEventListener("DOMContentLoaded", function (event) {
+    APP.methods.components();
+    APP.methods.templates();
+  });
+})(window, FRAMEWORK, undefined);
 
 /***/ })
 /******/ ]);

@@ -1,5 +1,6 @@
-(( ) => {
-  const APP = APP || {}
+const FRAMEWORK = FRAMEWORK || {};
+
+(( window, APP ) => {
 
   APP.data = {
     hello : 'world',
@@ -104,7 +105,9 @@
     }
   }
 
-  APP.methods.components()
-  APP.methods.templates()
+  document.addEventListener("DOMContentLoaded", (event) => {
+    APP.methods.components()
+    APP.methods.templates()
+  })
 
-})( )
+})( window, FRAMEWORK, undefined )
