@@ -9,4 +9,4 @@ Stuff that it eventually could end up with:
 [x] run only the components in the DOM
 [-] binding template variables to variables
 [ ] animation api
-[ ] breakpoint sniffer
+[x] breakpoint sniffer

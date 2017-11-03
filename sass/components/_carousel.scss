@@ -1,5 +1,5 @@
 /* carousel
-   ========================================================================== */
+========================================================================== */
 .carousel {
   display: flex;
   justify-content: space-around;
@@ -19,7 +19,7 @@
 }
 
 .carousel-item {
-  flex-grow: 1;
+  width: 25vw
 }
 
 .carousel-buttons {

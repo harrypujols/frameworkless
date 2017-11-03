@@ -2,6 +2,7 @@ const FRAMEWORK = FRAMEWORK || {}
 
 /* methods
 ========================================================================== */
+import render from './methods/render'
 import components from './methods/components'
 import breakpoint from './methods/breakpoint'
 
@@ -9,30 +10,32 @@ import breakpoint from './methods/breakpoint'
 ========================================================================== */
 import carousel from './components/carousel'
 import include from './components/include'
-import render from './components/render'
+
 
 /* templates
 ========================================================================== */
 import hello from './templates/hello'
-import fruits from './templates/fruits'
+import slides from './templates/slides'
 
 (( window, APP ) => {
 
   APP.templates = {
     hello : hello,
-    fruits : fruits
+    slides : slides,
   }
 
   APP.methods = {
+    render: render,
     components : components,
     breakpoint : breakpoint
   }
 
   APP.components = {
     carousel : carousel,
-    include : include,
-    render: render
+    include : include
   }
+
+  APP.methods.render( APP )
 
   document.addEventListener('DOMContentLoaded', () => {
     APP.methods.components( APP )

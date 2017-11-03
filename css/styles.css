@@ -54,7 +54,7 @@ svg {
   height: 100%; }
 
 /* carousel
-   ========================================================================== */
+========================================================================== */
 .carousel {
   display: flex;
   justify-content: space-around;
@@ -71,7 +71,7 @@ svg {
   padding: 0; }
 
 .carousel-item {
-  flex-grow: 1; }
+  width: 25vw; }
 
 .carousel-buttons {
   display: flex;
