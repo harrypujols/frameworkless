@@ -5,7 +5,7 @@ export default ( APP ) => {
       let key = entry[0]
       let value = entry[1]
       if ( key == element.dataset.template ) {
-        element.innerHTML = value()
+        element.innerHTML = value.template()
       }
     })
   })
