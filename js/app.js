@@ -98,6 +98,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var FRAMEWORK = FRAMEWORK || {};
 
+/* methods
+========================================================================== */
+
+
+/* components
+========================================================================== */
+
+
+/* templates
+========================================================================== */
+
+
 (function (window, APP) {
 
   APP.templates = {
@@ -115,7 +127,7 @@ var FRAMEWORK = FRAMEWORK || {};
     render: _render2.default
   };
 
-  document.addEventListener('DOMContentLoaded', function (event) {
+  document.addEventListener('DOMContentLoaded', function () {
     APP.methods.components(APP);
   });
 })(window, FRAMEWORK, undefined);

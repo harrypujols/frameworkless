@@ -1,11 +1,17 @@
 const FRAMEWORK = FRAMEWORK || {}
 
+/* methods
+========================================================================== */
 import components from './methods/components'
 
+/* components
+========================================================================== */
 import carousel from './components/carousel'
 import include from './components/include'
 import render from './components/render'
 
+/* templates
+========================================================================== */
 import hello from './templates/hello'
 import fruits from './templates/fruits'
 
@@ -26,7 +32,7 @@ import fruits from './templates/fruits'
     render: render
   }
 
-  document.addEventListener('DOMContentLoaded', (event) => {
+  document.addEventListener('DOMContentLoaded', () => {
     APP.methods.components( APP )
   })
 
