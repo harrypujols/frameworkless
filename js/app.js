@@ -74,17 +74,25 @@ var _components = __webpack_require__(1);
 
 var _components2 = _interopRequireDefault(_components);
 
-var _templates = __webpack_require__(2);
-
-var _templates2 = _interopRequireDefault(_templates);
-
-var _carousel = __webpack_require__(3);
+var _carousel = __webpack_require__(2);
 
 var _carousel2 = _interopRequireDefault(_carousel);
 
-var _include = __webpack_require__(4);
+var _include = __webpack_require__(3);
 
 var _include2 = _interopRequireDefault(_include);
+
+var _render = __webpack_require__(4);
+
+var _render2 = _interopRequireDefault(_render);
+
+var _hello = __webpack_require__(5);
+
+var _hello2 = _interopRequireDefault(_hello);
+
+var _fruits = __webpack_require__(6);
+
+var _fruits2 = _interopRequireDefault(_fruits);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -92,38 +100,23 @@ var FRAMEWORK = FRAMEWORK || {};
 
 (function (window, APP) {
 
-  APP.data = {
-    hello: 'world',
-    fruits: ['banana', 'apple', 'orange', 'pear', 'pineapple']
-  };
-
   APP.templates = {
-    hello: function hello() {
-      return 'Hello, ' + APP.data.hello + '.';
-    },
-
-    fruits: function fruits() {
-      var items = [];
-      APP.data.fruits.forEach(function (fruit) {
-        items.push('<li> ' + fruit + ' </li>');
-      });
-      return items.join('');
-    }
+    hello: _hello2.default,
+    fruits: _fruits2.default
   };
 
   APP.methods = {
-    components: _components2.default,
-    templates: _templates2.default
+    components: _components2.default
   };
 
   APP.components = {
     carousel: _carousel2.default,
-    include: _include2.default
+    include: _include2.default,
+    render: _render2.default
   };
 
   document.addEventListener('DOMContentLoaded', function (event) {
     APP.methods.components(APP);
-    APP.methods.templates(APP);
   });
 })(window, FRAMEWORK, undefined);
 
@@ -154,30 +147,6 @@ exports.default = function (APP) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (APP) {
-  var elements = document.querySelectorAll('[data-template]');
-  elements.forEach(function (element) {
-    Object.entries(APP.templates).forEach(function (entry) {
-      var key = entry[0];
-      var value = entry[1];
-      if (key == element.dataset.template) {
-        element.innerHTML = value();
-      }
-    });
-  });
-};
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -244,7 +213,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -283,6 +252,89 @@ var _class = function () {
 }();
 
 exports.default = _class;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _class = function () {
+  function _class(element, APP) {
+    _classCallCheck(this, _class);
+
+    this.element = element;
+    this.entries = APP.templates;
+    this.template = this.element.dataset.template;
+  }
+
+  _createClass(_class, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
+
+      Object.entries(this.entries).forEach(function (entry) {
+        var key = entry[0];
+        var value = entry[1];
+        if (key == _this.template) {
+          _this.element.innerHTML = value.template();
+        }
+      });
+    }
+  }]);
+
+  return _class;
+}();
+
+exports.default = _class;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  data: 'world',
+  template: function template() {
+    return 'Hello, ' + this.data + '.';
+  }
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  data: ['banana', 'apple', 'orange', 'pear', 'pineapple'],
+
+  template: function template() {
+    var items = [];
+    this.data.forEach(function (fruit) {
+      items.push('<li> ' + fruit + ' </li>');
+    });
+    return items.join('');
+  }
+};
 
 /***/ })
 /******/ ]);
