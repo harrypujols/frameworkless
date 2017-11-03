@@ -74,23 +74,27 @@ var _components = __webpack_require__(1);
 
 var _components2 = _interopRequireDefault(_components);
 
-var _carousel = __webpack_require__(2);
+var _breakpoint = __webpack_require__(2);
+
+var _breakpoint2 = _interopRequireDefault(_breakpoint);
+
+var _carousel = __webpack_require__(3);
 
 var _carousel2 = _interopRequireDefault(_carousel);
 
-var _include = __webpack_require__(3);
+var _include = __webpack_require__(4);
 
 var _include2 = _interopRequireDefault(_include);
 
-var _render = __webpack_require__(4);
+var _render = __webpack_require__(5);
 
 var _render2 = _interopRequireDefault(_render);
 
-var _hello = __webpack_require__(5);
+var _hello = __webpack_require__(6);
 
 var _hello2 = _interopRequireDefault(_hello);
 
-var _fruits = __webpack_require__(6);
+var _fruits = __webpack_require__(7);
 
 var _fruits2 = _interopRequireDefault(_fruits);
 
@@ -118,7 +122,8 @@ var FRAMEWORK = FRAMEWORK || {};
   };
 
   APP.methods = {
-    components: _components2.default
+    components: _components2.default,
+    breakpoint: _breakpoint2.default
   };
 
   APP.components = {
@@ -129,6 +134,11 @@ var FRAMEWORK = FRAMEWORK || {};
 
   document.addEventListener('DOMContentLoaded', function () {
     APP.methods.components(APP);
+    console.log(APP.methods.breakpoint());
+  });
+
+  window.addEventListener('resize', function () {
+    console.log(APP.methods.breakpoint());
   });
 })(window, FRAMEWORK, undefined);
 
@@ -159,6 +169,22 @@ exports.default = function (APP) {
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var breakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
+  return breakpoint;
+};
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -225,7 +251,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -266,7 +292,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -310,7 +336,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -327,7 +353,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

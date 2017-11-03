@@ -1,0 +1,22 @@
+@mixin breakpoint($breakpoint, $type: min) {
+  $value: map-get($breakpoints, $breakpoint);
+  $direction: map-get($breakpoint-directions, $type);
+
+  @if $value != null {
+    @if $direction != null {
+      $current-breakpoint: $breakpoint !global;
+      @media (#{$direction}: $value) {
+        @content;
+      }
+      $current-breakpoint: $default-breakpoint !global;
+    }
+
+    @else {
+      @warn "Invalid breakpoint direction `#{$type}`.";
+    }
+  }
+
+  @else {
+    @warn "Invalid breakpoint `#{$breakpoint}`.";
+  }
+}

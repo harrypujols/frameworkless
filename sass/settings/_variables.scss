@@ -1,0 +1,16 @@
+$breakpoints: (
+  "phone-portrait": 321px,
+  "phone-landscape": 481px,
+  "tablet-portrait": 601px,
+  "tablet-landscape": 769px,
+  "desktop": 961px,
+  "desktop-large": 1280px,
+);
+
+$breakpoint-directions: (
+  "min": "min-width",
+  "max": "max-width"
+);
+
+$default-breakpoint: root;
+$current-breakpoint: $default-breakpoint;

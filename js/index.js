@@ -3,6 +3,7 @@ const FRAMEWORK = FRAMEWORK || {}
 /* methods
 ========================================================================== */
 import components from './methods/components'
+import breakpoint from './methods/breakpoint'
 
 /* components
 ========================================================================== */
@@ -24,6 +25,7 @@ import fruits from './templates/fruits'
 
   APP.methods = {
     components : components,
+    breakpoint : breakpoint
   }
 
   APP.components = {
@@ -34,6 +36,11 @@ import fruits from './templates/fruits'
 
   document.addEventListener('DOMContentLoaded', () => {
     APP.methods.components( APP )
+    console.log ( APP.methods.breakpoint() )
+  })
+
+  window.addEventListener('resize', () => {
+    console.log ( APP.methods.breakpoint() )
   })
 
 })( window, FRAMEWORK, undefined )
