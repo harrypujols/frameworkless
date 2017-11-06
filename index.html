@@ -6,22 +6,23 @@
   <title>Document</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body role="application">
-  <h1>Frameworkless Framework</h1>
-  <h2 data-js="render" data-template="hello"></h2>
-  <div class="svg-include" data-js="include" data-file="img/briefcase.svg"></div>
-  <div class="carousel" data-js="carousel">
-    <a role="button" class="carousel-button prev" href="#" data-btn="prev">
-      <span class="icon-arrow-left"></span>
-    </a>
-    <div class="carousel-inner">
-      <ul class="carousel-container" data-js="render" data-template="slides"></ul>
+<body>
+  <div class="container">
+    <h1>Frameworkless Framework</h1>
+    <h2 data-js="render" data-template="hello"></h2>
+    <div class="svg-include" data-js="include" data-file="img/briefcase.svg"></div>
+    <div class="carousel" data-js="carousel">
+      <a role="button" class="carousel-button prev" href="#" data-btn="prev">
+        <span class="icon-arrow-left"></span>
+      </a>
+      <div class="carousel-inner">
+        <ul class="carousel-container" data-js="render" data-template="slides"></ul>
+      </div>
+      <a role="button" class="carousel-button next" href="#" data-btn="next">
+        <span class="icon-arrow-right"></span>
+      </a>
     </div>
-    <a role="button" class="carousel-button next" href="#" data-btn="next">
-      <span class="icon-arrow-right"></span>
-    </a>
   </div>
-
   <script src="js/app.js"></script>
 </body>
 </html>

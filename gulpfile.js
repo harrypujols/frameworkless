@@ -32,7 +32,9 @@ var gulp        = require('gulp'),
     gulp.task('sass', ()=> {
        return gulp.src('./sass/*.scss')
               .pipe(glob())
-              .pipe(sass())
+              .pipe(sass({
+                outputStyle : 'expanded'
+              }).on('error', sass.logError))
               .pipe(gulp.dest('./css'))
               .pipe(browsersync.stream());
     })

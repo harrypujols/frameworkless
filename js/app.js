@@ -329,9 +329,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  data: 'world',
+  data: 'A rapid static-site prototyping boilerplate',
+
   template: function template() {
-    return 'Hello, ' + this.data + '.';
+    return this.data + '.';
   }
 };
 
@@ -346,7 +347,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  data: [{ title: 'Very Vanilla', text: 'This is not a library, just a way to organize your js.' }, { title: 'Template Literals', text: 'Why learn another templating language?' }, { title: 'Components', text: 'As simple or as complex as you need them to be.' }, { title: 'Methods', text: 'To organize your helper functions.' }],
+  data: [{ title: 'Gulp JS', text: 'As principal task runner, with browser sync.' }, { title: 'Webpack', text: 'With Babel, as ES6 transpiler.' }, { title: 'Sass', text: 'As the css pre-processor.' }, { title: 'No libraries', text: 'No frameworks, just vanilla JS.' }],
 
   template: function template() {
     var items = [];

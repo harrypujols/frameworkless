@@ -1,6 +1,7 @@
 export default {
-  data : 'world',
+  data : 'A rapid static-site prototyping boilerplate',
+
   template : function() {
-    return `Hello, ${ this.data }.`
+    return `${ this.data }.`
   }
 }
