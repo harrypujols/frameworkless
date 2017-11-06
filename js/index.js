@@ -39,10 +39,10 @@ import run from './app/run'
     include : include
   }
 
-  APP.run = {
+  APP.start = {
     run : run
   }
 
-  APP.run.run( APP )
+  APP.start.run( APP )
 
 })( window, FRAMEWORK, undefined )

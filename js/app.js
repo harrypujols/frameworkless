@@ -140,11 +140,11 @@ var FRAMEWORK = FRAMEWORK || {};
     include: _include2.default
   };
 
-  APP.run = {
+  APP.start = {
     run: _run2.default
   };
 
-  APP.run.run(APP);
+  APP.start.run(APP);
 })(window, FRAMEWORK, undefined);
 
 /***/ }),
