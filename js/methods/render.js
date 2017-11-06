@@ -1,6 +1,5 @@
 export default ( APP ) => {
-  let elements = document.querySelectorAll('[data-js=render]')
-  console.log( elements )
+  let elements = window.document.querySelectorAll('[data-js=render]')
   elements.forEach(( element ) => {
 
     Object.entries( APP.templates ).forEach(( entry ) => {

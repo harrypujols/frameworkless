@@ -156,8 +156,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (APP) {
-  var elements = document.querySelectorAll('[data-js=render]');
-  console.log(elements);
+  var elements = window.document.querySelectorAll('[data-js=render]');
   elements.forEach(function (element) {
 
     Object.entries(APP.templates).forEach(function (entry) {
