@@ -17,6 +17,10 @@ import include from './components/include'
 import hello from './templates/hello'
 import slides from './templates/slides'
 
+/* run
+========================================================================== */
+import run from './app/run'
+
 (( window, APP ) => {
 
   APP.templates = {
@@ -35,19 +39,10 @@ import slides from './templates/slides'
     include : include
   }
 
-  APP.run = ( APP ) => {
-    APP.methods.render( APP )
-
-    document.addEventListener('DOMContentLoaded', () => {
-      APP.methods.components( APP )
-      console.log ( APP.methods.breakpoint() )
-    })
-
-    window.addEventListener('resize', () => {
-      console.log ( APP.methods.breakpoint() )
-    })
+  APP.run = {
+    run : run
   }
 
-  APP.run( APP )
+  APP.run.run( APP )
 
 })( window, FRAMEWORK, undefined )

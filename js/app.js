@@ -98,6 +98,10 @@ var _slides = __webpack_require__(7);
 
 var _slides2 = _interopRequireDefault(_slides);
 
+var _run = __webpack_require__(8);
+
+var _run2 = _interopRequireDefault(_run);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FRAMEWORK = FRAMEWORK || {};
@@ -111,6 +115,10 @@ var FRAMEWORK = FRAMEWORK || {};
 
 
 /* templates
+========================================================================== */
+
+
+/* run
 ========================================================================== */
 
 
@@ -132,20 +140,11 @@ var FRAMEWORK = FRAMEWORK || {};
     include: _include2.default
   };
 
-  APP.run = function (APP) {
-    APP.methods.render(APP);
-
-    document.addEventListener('DOMContentLoaded', function () {
-      APP.methods.components(APP);
-      console.log(APP.methods.breakpoint());
-    });
-
-    window.addEventListener('resize', function () {
-      console.log(APP.methods.breakpoint());
-    });
+  APP.run = {
+    run: _run2.default
   };
 
-  APP.run(APP);
+  APP.run.run(APP);
 })(window, FRAMEWORK, undefined);
 
 /***/ }),
@@ -360,6 +359,30 @@ exports.default = {
     });
     return items.join('');
   }
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (APP) {
+  APP.methods.render(APP);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    APP.methods.components(APP);
+    console.log(APP.methods.breakpoint());
+  });
+
+  window.addEventListener('resize', function () {
+    console.log(APP.methods.breakpoint());
+  });
 };
 
 /***/ })
