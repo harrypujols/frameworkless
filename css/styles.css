@@ -95,19 +95,32 @@ svg {
 }
 
 .carousel-inner {
-  width: 25vw;
   overflow: hidden;
 }
 
+.carousel-inner,
+.carousel-item {
+  width: 50vw;
+}
+
+@media (min-width: 601px) {
+  .carousel-inner,
+  .carousel-item {
+    width: 25vw;
+  }
+}
+
 .carousel-container {
-  width: 100vw;
   display: flex;
   list-style: none;
   padding: 0;
+  width: 200vw;
 }
 
-.carousel-item {
-  width: 25vw;
+@media (min-width: 601px) {
+  .carousel-container {
+    width: 100vw;
+  }
 }
 
 .carousel-buttons {

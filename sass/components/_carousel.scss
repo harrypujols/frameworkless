@@ -1,5 +1,8 @@
 /* carousel
 ========================================================================== */
+$item-width: 50vw !default;
+$carousel-width: $item-width * 4;
+
 .carousel {
   display: flex;
   justify-content: space-around;
@@ -7,19 +10,30 @@
 }
 
 .carousel-inner {
-  width: 25vw;
   overflow: hidden;
 }
 
+.carousel-inner,
+.carousel-item {
+  width: $item-width;
+
+  @include breakpoint( tablet-portrait ) {
+    $item-width: 25vw;
+    width: $item-width;
+  }
+}
+
 .carousel-container {
-  width: 100vw;
   display: flex;
   list-style: none;
   padding: 0;
-}
+  width: $carousel-width;
 
-.carousel-item {
-  width: 25vw
+  @include breakpoint( tablet-portrait ) {
+    $item-width: 25vw;
+    $carousel-width: $item-width * 4;
+    width: $carousel-width;
+  }
 }
 
 .carousel-buttons {
