@@ -35,15 +35,19 @@ import slides from './templates/slides'
     include : include
   }
 
-  APP.methods.render( APP )
+  APP.run = ( APP ) => {
+    APP.methods.render( APP )
 
-  document.addEventListener('DOMContentLoaded', () => {
-    APP.methods.components( APP )
-    console.log ( APP.methods.breakpoint() )
-  })
+    document.addEventListener('DOMContentLoaded', () => {
+      APP.methods.components( APP )
+      console.log ( APP.methods.breakpoint() )
+    })
 
-  window.addEventListener('resize', () => {
-    console.log ( APP.methods.breakpoint() )
-  })
+    window.addEventListener('resize', () => {
+      console.log ( APP.methods.breakpoint() )
+    })
+  }
+
+  APP.run( APP )
 
 })( window, FRAMEWORK, undefined )

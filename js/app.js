@@ -132,16 +132,20 @@ var FRAMEWORK = FRAMEWORK || {};
     include: _include2.default
   };
 
-  APP.methods.render(APP);
+  APP.run = function (APP) {
+    APP.methods.render(APP);
 
-  document.addEventListener('DOMContentLoaded', function () {
-    APP.methods.components(APP);
-    console.log(APP.methods.breakpoint());
-  });
+    document.addEventListener('DOMContentLoaded', function () {
+      APP.methods.components(APP);
+      console.log(APP.methods.breakpoint());
+    });
 
-  window.addEventListener('resize', function () {
-    console.log(APP.methods.breakpoint());
-  });
+    window.addEventListener('resize', function () {
+      console.log(APP.methods.breakpoint());
+    });
+  };
+
+  APP.run(APP);
 })(window, FRAMEWORK, undefined);
 
 /***/ }),
