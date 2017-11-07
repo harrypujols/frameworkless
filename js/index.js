@@ -24,23 +24,23 @@ import run from './app/run'
 (( window, APP ) => {
 
   APP.templates = {
-    hello : hello,
-    slides : slides,
+    hello,
+    slides
   }
 
   APP.methods = {
-    render: render,
-    components : components,
-    breakpoint : breakpoint
+    render,
+    components,
+    breakpoint
   }
 
   APP.components = {
-    carousel : carousel,
-    include : include
+    carousel,
+    include
   }
 
   APP.start = {
-    run : run
+    run
   }
 
   APP.start.run( APP )
