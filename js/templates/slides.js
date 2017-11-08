@@ -7,15 +7,14 @@ export default {
   ],
 
   template : function() {
-    var items = []
-      this.data.forEach(( data ) => {
-        items.push(`<li class="carousel-item">
+    let items = this.data.map(data =>
+      `<li class="carousel-item">
         <div>
           <h3>${ data.title }</h3>
           <p>${ data.text }</p>
         </div>
-        </li>`)
-      })
+      </li>`
+    )
     return items.join('')
   }
 }

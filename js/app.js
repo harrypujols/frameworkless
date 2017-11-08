@@ -159,9 +159,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (APP) {
-  var elements = window.document.querySelectorAll('[data-js=render]');
+  var elements = document.querySelectorAll('[data-js=render]');
   elements.forEach(function (element) {
-
     Object.entries(APP.templates).forEach(function (entry) {
       var key = entry[0];
       var value = entry[1];
@@ -353,9 +352,8 @@ exports.default = {
   data: [{ title: 'Gulp JS', text: 'As principal task runner, with browser sync.' }, { title: 'Webpack', text: 'With Babel, as ES6 transpiler.' }, { title: 'Sass', text: 'As the css pre-processor.' }, { title: 'No libraries', text: 'No frameworks, just vanilla JS.' }],
 
   template: function template() {
-    var items = [];
-    this.data.forEach(function (data) {
-      items.push('<li class="carousel-item">\n        <div>\n          <h3>' + data.title + '</h3>\n          <p>' + data.text + '</p>\n        </div>\n        </li>');
+    var items = this.data.map(function (data) {
+      return '<li class="carousel-item">\n        <div>\n          <h3>' + data.title + '</h3>\n          <p>' + data.text + '</p>\n        </div>\n      </li>';
     });
     return items.join('');
   }
