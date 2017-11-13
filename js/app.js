@@ -352,10 +352,9 @@ exports.default = {
   data: [{ title: 'Gulp JS', text: 'As principal task runner, with browser sync.' }, { title: 'Webpack', text: 'With Babel, as ES6 transpiler.' }, { title: 'Sass', text: 'As the css pre-processor.' }, { title: 'No libraries', text: 'No frameworks, just vanilla JS.' }],
 
   template: function template() {
-    var repeat = this.data.map(function (data) {
+    return this.data.map(function (data) {
       return '<li class="carousel-item">\n        <div>\n          <h3>' + data.title + '</h3>\n          <p>' + data.text + '</p>\n        </div>\n      </li>';
     }).join('');
-    return repeat;
   }
 };
 

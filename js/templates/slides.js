@@ -7,7 +7,7 @@ export default {
   ],
 
   template : function() {
-    let repeat = this.data.map(data =>
+    return this.data.map(data =>
       `<li class="carousel-item">
         <div>
           <h3>${ data.title }</h3>
@@ -15,6 +15,5 @@ export default {
         </div>
       </li>`
     ).join('')
-    return repeat
   }
 }
