@@ -6,7 +6,7 @@ export default {
     { title: 'No libraries', text: 'No frameworks, just vanilla JS.'}
   ],
 
-  template : function() {
+  template() {
     return this.data.map(data =>
       `<li class="carousel-item">
         <div>

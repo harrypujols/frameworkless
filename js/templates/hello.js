@@ -1,7 +1,7 @@
 export default {
   data : 'boilerplate',
 
-  template : function() {
+  template() {
     return `A rapid static-site prototyping ${ this.data }.`
   }
 }
