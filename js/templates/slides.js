@@ -14,7 +14,7 @@ export default {
           <p>${ data.text }</p>
         </div>
       </li>`
-    )
-    return repeat.join('')
+    ).join('')
+    return repeat
   }
 }

@@ -42,7 +42,7 @@ var gulp        = require('gulp'),
     gulp.task('serve', ['sass', 'webpack'], ()=> {
       browsersync.init({
         server: './'
-    })
+      })
 
       gulp.watch(['./js/*.js', './js/**/*.js'], ['webpack'])
       gulp.watch(['./sass/*.scss', './sass/**/*.scss'], ['sass'])

@@ -354,8 +354,8 @@ exports.default = {
   template: function template() {
     var repeat = this.data.map(function (data) {
       return '<li class="carousel-item">\n        <div>\n          <h3>' + data.title + '</h3>\n          <p>' + data.text + '</p>\n        </div>\n      </li>';
-    });
-    return repeat.join('');
+    }).join('');
+    return repeat;
   }
 };
 
