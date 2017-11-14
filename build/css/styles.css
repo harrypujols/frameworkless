@@ -6,6 +6,17 @@
   max-width: 961px;
 }
 
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
 /* icons
 ========================================================================== */
 .icon-arrow-left, .icon-arrow-right {
@@ -138,4 +149,34 @@ svg {
 .svg-include {
   width: 100px;
   height: 100px;
+}
+
+/* carousel
+========================================================================== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  max-width: calc(100% - 80px);
+}
+
+.modal-button {
+  display: block;
+  border: 2px solid black;
+  background-color: transparent;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 0;
 }

@@ -5,3 +5,14 @@
   margin: 0 auto;
   max-width: map-get($breakpoints, 'desktop');
 }
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}

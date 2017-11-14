@@ -24,10 +24,14 @@
   </a>
 </div>
 
-  <button data-open="animation-modal">Open Modal</button>
-<div class="modal" data-js="modal" data-window="animation-modal">
-Modal stuff goes here
-<button data-close="animation-modal">Close Modal</button>
+  <button class="modal-button" data-open="animation-modal">Open Modal</button>
+<div class="modal overlay center" data-js="modal" data-window="animation-modal">
+  <div class="modal-content">
+    <p>
+      Modal stuff goes here
+    </p>
+    <button class="modal-button" data-close="animation-modal">Close Modal</button>
+  </div>
 </div>
 
 </div>
