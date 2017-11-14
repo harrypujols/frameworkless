@@ -90,6 +90,10 @@ var _include = __webpack_require__(5);
 
 var _include2 = _interopRequireDefault(_include);
 
+var _modal = __webpack_require__(9);
+
+var _modal2 = _interopRequireDefault(_modal);
+
 var _hello = __webpack_require__(6);
 
 var _hello2 = _interopRequireDefault(_hello);
@@ -137,7 +141,8 @@ var FRAMEWORK = FRAMEWORK || {};
 
   APP.components = {
     carousel: _carousel2.default,
-    include: _include2.default
+    include: _include2.default,
+    modal: _modal2.default
   };
 
   APP.start = {
@@ -381,6 +386,42 @@ exports.default = function (APP) {
     console.log(APP.methods.breakpoint());
   });
 };
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _class = function () {
+  function _class(element) {
+    _classCallCheck(this, _class);
+
+    this.element = element;
+    this.window = this.element.dataset.window;
+    this.trigger = document.querySelectorAll("[data-trigger=" + this.window + "]");
+  }
+
+  _createClass(_class, [{
+    key: "init",
+    value: function init() {
+      console.log(this.trigger);
+    }
+  }]);
+
+  return _class;
+}();
+
+exports.default = _class;
 
 /***/ })
 /******/ ]);
