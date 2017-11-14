@@ -59,6 +59,7 @@ var gulp        = require('gulp'),
 
       gulp.watch(['./js/*.js', './js/**/*.js'], ['webpack'])
       gulp.watch(['./sass/*.scss', './sass/**/*.scss'], ['sass'])
+      gulp.watch(['./templates/*.html', './templates/**/*.html'], ['html'])
       gulp.watch('./index.html').on('change', browsersync.reload)
     })
 
