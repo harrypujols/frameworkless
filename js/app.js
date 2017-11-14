@@ -370,9 +370,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (APP) {
-  APP.methods.render(APP);
 
   document.addEventListener('DOMContentLoaded', function () {
+    APP.methods.render(APP);
     APP.methods.components(APP);
     console.log(APP.methods.breakpoint());
   });

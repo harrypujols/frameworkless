@@ -2,6 +2,8 @@ var gulp        = require('gulp'),
     sass        = require('gulp-sass'),
     glob        = require('gulp-sass-glob'),
     webpack     = require('webpack-stream'),
+    html        = require('gulp-nunjucks-render'),
+    data        = require('gulp-data'),
     browsersync = require('browser-sync').create();
 
     gulp.task('webpack', ()=> {
@@ -30,13 +32,24 @@ var gulp        = require('gulp'),
     })
 
     gulp.task('sass', ()=> {
-       return gulp.src('./sass/*.scss')
-              .pipe(glob())
-              .pipe(sass({
-                outputStyle : 'expanded'
-              }).on('error', sass.logError))
-              .pipe(gulp.dest('./css'))
-              .pipe(browsersync.stream());
+      return gulp.src('./sass/*.scss')
+            .pipe(glob())
+            .pipe(sass({
+              outputStyle : 'expanded'
+            }).on('error', sass.logError))
+            .pipe(gulp.dest('./css'))
+            .pipe(browsersync.stream());
+    })
+
+    gulp.task('html', function () {
+      return gulp.src('./templates/*.html')
+        .pipe(data(function() {
+          return require('./data/data.json')
+        }))
+        .pipe(html({
+          path: ['./templates']
+        }))
+        .pipe(gulp.dest('./'));
     })
 
     gulp.task('serve', ['sass', 'webpack'], ()=> {
