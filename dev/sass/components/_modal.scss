@@ -15,8 +15,17 @@
 
 .modal-content {
   background-color: white;
-  padding: 40px;
   max-width: calc(100% - 80px)
+}
+
+.modal-header {
+  text-align: right;
+  padding: 0 5px;
+}
+
+.modal-body {
+  padding: 40px;
+  padding-top: 0;
 }
 
 .modal-button {
@@ -26,4 +35,10 @@
   font-size: 14px;
   padding: 5px 10px;
   border-radius: 0;
+}
+
+.naked-modal-button {
+  border: 0;
+  background-color: transparent;
+  font-size: 28px;
 }
