@@ -4,10 +4,11 @@ var gulp        = require('gulp'),
     webpack     = require('webpack-stream'),
     html        = require('gulp-nunjucks-render'),
     data        = require('gulp-data'),
+    imagemin    = require('gulp-imagemin'),
     browsersync = require('browser-sync').create();
 
     gulp.task('webpack', ()=> {
-      gulp.src('./js/index.js')
+      gulp.src('./dev/js/index.js')
         .pipe( webpack({
           watch: true,
           output: {
@@ -28,39 +29,45 @@ var gulp        = require('gulp'),
             ]
           }
         }))
-        .pipe(gulp.dest('./js'));
+        .pipe(gulp.dest('./build/js'));
     })
 
     gulp.task('sass', ()=> {
-      return gulp.src('./sass/*.scss')
+      return gulp.src('./dev/sass/*.scss')
             .pipe(glob())
             .pipe(sass({
               outputStyle : 'expanded'
             }).on('error', sass.logError))
-            .pipe(gulp.dest('./css'))
+            .pipe(gulp.dest('./build/css'))
             .pipe(browsersync.stream());
     })
 
-    gulp.task('html', function () {
-      return gulp.src('./templates/*.html')
+    gulp.task('html', ()=> {
+      return gulp.src('./dev/templates/*.html')
         .pipe(data(function() {
-          return require('./data/data.json')
+          return require('./dev/data/data.json')
         }))
         .pipe(html({
-          path: ['./templates']
+          path: ['./dev/templates']
         }))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./build'));
     })
 
-    gulp.task('serve', ['sass', 'webpack'], ()=> {
+    gulp.task('image', ()=> {
+      return gulp.src('./dev/img/**')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./build/img'));
+    })
+
+    gulp.task('serve', ['sass', 'webpack', 'html', 'image'], ()=> {
       browsersync.init({
-        server: './'
+        server: './build'
       })
 
-      gulp.watch(['./js/*.js', './js/**/*.js'], ['webpack'])
-      gulp.watch(['./sass/*.scss', './sass/**/*.scss'], ['sass'])
-      gulp.watch(['./templates/*.html', './templates/**/*.html'], ['html'])
-      gulp.watch('./index.html').on('change', browsersync.reload)
+      gulp.watch(['./dev/js/*.js', './dev/js/**/*.js'], ['webpack'])
+      gulp.watch(['./dev/sass/*.scss', './dev/sass/**/*.scss'], ['sass'])
+      gulp.watch(['./dev/templates/*.html', './dev/templates/**/*.html'], ['html'])
+      gulp.watch('./build/index.html').on('change', browsersync.reload)
     })
 
     gulp.task('default', ['serve'])
