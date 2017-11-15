@@ -82,27 +82,27 @@ var _breakpoint = __webpack_require__(3);
 
 var _breakpoint2 = _interopRequireDefault(_breakpoint);
 
-var _carousel = __webpack_require__(4);
+var _carousel = __webpack_require__(5);
 
 var _carousel2 = _interopRequireDefault(_carousel);
 
-var _include = __webpack_require__(5);
+var _include = __webpack_require__(6);
 
 var _include2 = _interopRequireDefault(_include);
 
-var _modal = __webpack_require__(6);
+var _modal = __webpack_require__(7);
 
 var _modal2 = _interopRequireDefault(_modal);
 
-var _hello = __webpack_require__(7);
+var _hello = __webpack_require__(8);
 
 var _hello2 = _interopRequireDefault(_hello);
 
-var _slides = __webpack_require__(8);
+var _slides = __webpack_require__(9);
 
 var _slides2 = _interopRequireDefault(_slides);
 
-var _run = __webpack_require__(9);
+var _run = __webpack_require__(10);
 
 var _run2 = _interopRequireDefault(_run);
 
@@ -218,7 +218,8 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 4 */
+/* 4 */,
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -285,7 +286,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -326,7 +327,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -386,7 +387,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -404,7 +405,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -424,7 +425,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
