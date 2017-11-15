@@ -82,23 +82,27 @@ var _breakpoint = __webpack_require__(3);
 
 var _breakpoint2 = _interopRequireDefault(_breakpoint);
 
-var _carousel = __webpack_require__(4);
+var _carousel = __webpack_require__(5);
 
 var _carousel2 = _interopRequireDefault(_carousel);
 
-var _include = __webpack_require__(5);
+var _include = __webpack_require__(6);
 
 var _include2 = _interopRequireDefault(_include);
 
-var _hello = __webpack_require__(6);
+var _modal = __webpack_require__(7);
+
+var _modal2 = _interopRequireDefault(_modal);
+
+var _hello = __webpack_require__(8);
 
 var _hello2 = _interopRequireDefault(_hello);
 
-var _slides = __webpack_require__(7);
+var _slides = __webpack_require__(9);
 
 var _slides2 = _interopRequireDefault(_slides);
 
-var _run = __webpack_require__(8);
+var _run = __webpack_require__(10);
 
 var _run2 = _interopRequireDefault(_run);
 
@@ -137,7 +141,8 @@ var FRAMEWORK = FRAMEWORK || {};
 
   APP.components = {
     carousel: _carousel2.default,
-    include: _include2.default
+    include: _include2.default,
+    modal: _modal2.default
   };
 
   APP.start = {
@@ -213,7 +218,8 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 4 */
+/* 4 */,
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -280,7 +286,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -321,7 +327,67 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _class = function () {
+  function _class(element) {
+    _classCallCheck(this, _class);
+
+    this.element = element;
+    this.window = this.element.dataset.window;
+    this.open = document.querySelectorAll('[data-open=' + this.window + ']');
+    this.close = this.element.querySelectorAll('[data-close]');
+  }
+
+  _createClass(_class, [{
+    key: 'create',
+    value: function create() {
+      var _this = this;
+
+      this.open.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          _this.element.classList.add('is-open');
+        });
+      });
+    }
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      var _this2 = this;
+
+      this.close.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          _this2.element.classList.remove('is-open');
+        });
+      });
+    }
+  }, {
+    key: 'init',
+    value: function init() {
+      this.create();
+      this.destroy();
+    }
+  }]);
+
+  return _class;
+}();
+
+exports.default = _class;
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -339,7 +405,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -359,7 +425,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -10,6 +10,7 @@ import breakpoint from './methods/breakpoint'
 ========================================================================== */
 import carousel from './components/carousel'
 import include from './components/include'
+import modal from './components/modal'
 
 
 /* templates
@@ -36,7 +37,8 @@ import run from './app/run'
 
   APP.components = {
     carousel,
-    include
+    include,
+    modal
   }
 
   APP.start = {
