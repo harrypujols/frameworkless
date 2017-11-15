@@ -28,7 +28,7 @@ import run from './app/run'
     hello,
     slides
   }
-
+  
   APP.methods = {
     render,
     components,

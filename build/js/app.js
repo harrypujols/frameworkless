@@ -82,27 +82,27 @@ var _breakpoint = __webpack_require__(3);
 
 var _breakpoint2 = _interopRequireDefault(_breakpoint);
 
-var _carousel = __webpack_require__(5);
+var _carousel = __webpack_require__(4);
 
 var _carousel2 = _interopRequireDefault(_carousel);
 
-var _include = __webpack_require__(6);
+var _include = __webpack_require__(5);
 
 var _include2 = _interopRequireDefault(_include);
 
-var _modal = __webpack_require__(7);
+var _modal = __webpack_require__(6);
 
 var _modal2 = _interopRequireDefault(_modal);
 
-var _hello = __webpack_require__(8);
+var _hello = __webpack_require__(7);
 
 var _hello2 = _interopRequireDefault(_hello);
 
-var _slides = __webpack_require__(9);
+var _slides = __webpack_require__(8);
 
 var _slides2 = _interopRequireDefault(_slides);
 
-var _run = __webpack_require__(10);
+var _run = __webpack_require__(9);
 
 var _run2 = _interopRequireDefault(_run);
 
@@ -163,12 +163,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 exports.default = function (APP) {
   var elements = document.querySelectorAll('[data-js=render]');
   elements.forEach(function (element) {
     Object.entries(APP.templates).forEach(function (entry) {
-      var key = entry[0];
-      var value = entry[1];
+      var _entry = _slicedToArray(entry, 2),
+          key = _entry[0],
+          value = _entry[1];
+
       if (key == element.dataset.template) {
         element.innerHTML = value.template();
       }
@@ -187,12 +191,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 exports.default = function (APP) {
   var components = document.querySelectorAll('[data-js]');
   components.forEach(function (component) {
     Object.entries(APP.components).forEach(function (entry) {
-      var key = entry[0];
-      var value = entry[1];
+      var _entry = _slicedToArray(entry, 2),
+          key = _entry[0],
+          value = _entry[1];
+
       if (key == component.dataset.js) {
         var directive = new value(component, APP);
         directive.init();
@@ -218,8 +226,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 4 */,
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -286,7 +293,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -327,7 +334,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -387,7 +394,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -405,7 +412,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -425,7 +432,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
