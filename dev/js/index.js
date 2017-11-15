@@ -26,19 +26,19 @@ import run from './app/run'
 
   APP.templates = {
     hello,
-    slides
+    slides,
   }
-  
+
   APP.methods = {
     render,
     components,
-    breakpoint
+    breakpoint,
   }
 
   APP.components = {
     carousel,
     include,
-    modal
+    modal,
   }
 
   APP.start = {
