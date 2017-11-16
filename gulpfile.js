@@ -9,26 +9,7 @@ var gulp        = require('gulp'),
 
     gulp.task('webpack', ()=> {
       gulp.src('./dev/js/index.js')
-        .pipe( webpack({
-          watch: true,
-          output: {
-            filename: 'app.js'
-          },
-          module: {
-            rules: [
-              {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                  loader: 'babel-loader',
-                  options: {
-                    presets: ['env']
-                  }
-                }
-              },
-            ]
-          }
-        }))
+        .pipe(webpack( require('./webpack.config.js') ))
         .pipe(gulp.dest('./build/js'));
     })
 
