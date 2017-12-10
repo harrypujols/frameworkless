@@ -94,37 +94,25 @@ var _modal = __webpack_require__(6);
 
 var _modal2 = _interopRequireDefault(_modal);
 
-var _hello = __webpack_require__(7);
+var _size = __webpack_require__(7);
+
+var _size2 = _interopRequireDefault(_size);
+
+var _hello = __webpack_require__(8);
 
 var _hello2 = _interopRequireDefault(_hello);
 
-var _slides = __webpack_require__(8);
+var _slides = __webpack_require__(9);
 
 var _slides2 = _interopRequireDefault(_slides);
 
-var _run = __webpack_require__(9);
+var _run = __webpack_require__(10);
 
 var _run2 = _interopRequireDefault(_run);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FRAMEWORK = FRAMEWORK || {};
-
-/* methods
-========================================================================== */
-
-
-/* components
-========================================================================== */
-
-
-/* templates
-========================================================================== */
-
-
-/* run
-========================================================================== */
-
 
 (function (window, APP) {
 
@@ -142,7 +130,8 @@ var FRAMEWORK = FRAMEWORK || {};
   APP.components = {
     carousel: _carousel2.default,
     include: _include2.default,
-    modal: _modal2.default
+    modal: _modal2.default,
+    size: _size2.default
   };
 
   APP.start = {
@@ -221,8 +210,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function () {
-  var breakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
-  return breakpoint;
+  return window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
 };
 
 /***/ }),
@@ -403,6 +391,46 @@ exports.default = _class;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _class = function () {
+  function _class(element, APP) {
+    _classCallCheck(this, _class);
+
+    this.element = element;
+    this.breakpoint = APP.methods.breakpoint;
+  }
+
+  _createClass(_class, [{
+    key: 'init',
+    value: function init() {
+      var _this = this;
+
+      this.element.innerHTML = this.breakpoint();
+      window.addEventListener('resize', function () {
+        _this.element.innerHTML = _this.breakpoint();
+      });
+    }
+  }]);
+
+  return _class;
+}();
+
+exports.default = _class;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = {
   data: 'boilerplate',
 
@@ -412,7 +440,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -432,7 +460,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -447,11 +475,6 @@ exports.default = function (APP) {
   document.addEventListener('DOMContentLoaded', function () {
     APP.methods.render(APP);
     APP.methods.components(APP);
-    console.log(APP.methods.breakpoint());
-  });
-
-  window.addEventListener('resize', function () {
-    console.log(APP.methods.breakpoint());
   });
 };
 

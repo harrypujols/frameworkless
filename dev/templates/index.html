@@ -1,7 +1,7 @@
 {% extends "layouts/page.html" %}
 {% block content %}
 <div class="container">
-  <h1>{{ site.name }}</h1>
+  <h1 data-js="size"></h1>
   <h2 data-js="render" data-template="hello"></h2>
   <div class="svg-include" data-js="include" data-file="img/briefcase.svg"></div>
   {% include "includes/carousel.html" %}
