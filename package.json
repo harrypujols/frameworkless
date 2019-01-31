@@ -19,7 +19,6 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-nunjucks-render": "^2.2.2",
     "gulp-sass": "^4.0.1",
-    "gulp-sass-glob": "^1.0.9",
     "webpack-stream": "^4.0.3"
   }
 }

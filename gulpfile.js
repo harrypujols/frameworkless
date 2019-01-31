@@ -1,6 +1,5 @@
 var gulp        = require('gulp'),
     sass        = require('gulp-sass'),
-    glob        = require('gulp-sass-glob'),
     webpack     = require('webpack-stream'),
     html        = require('gulp-nunjucks-render'),
     data        = require('gulp-data'),
@@ -15,7 +14,6 @@ var gulp        = require('gulp'),
 
     gulp.task('sass', ()=> {
       return gulp.src('./dev/sass/*.scss')
-            .pipe(glob())
             .pipe(sass({
               outputStyle : 'expanded'
             }).on('error', sass.logError))
