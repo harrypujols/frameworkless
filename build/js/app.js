@@ -82,31 +82,43 @@ var _breakpoint = __webpack_require__(3);
 
 var _breakpoint2 = _interopRequireDefault(_breakpoint);
 
-var _carousel = __webpack_require__(4);
+var _resizestop = __webpack_require__(4);
+
+var _resizestop2 = _interopRequireDefault(_resizestop);
+
+var _scrolldirection = __webpack_require__(5);
+
+var _scrolldirection2 = _interopRequireDefault(_scrolldirection);
+
+var _scrollstop = __webpack_require__(6);
+
+var _scrollstop2 = _interopRequireDefault(_scrollstop);
+
+var _carousel = __webpack_require__(7);
 
 var _carousel2 = _interopRequireDefault(_carousel);
 
-var _include = __webpack_require__(5);
+var _include = __webpack_require__(8);
 
 var _include2 = _interopRequireDefault(_include);
 
-var _modal = __webpack_require__(6);
+var _modal = __webpack_require__(9);
 
 var _modal2 = _interopRequireDefault(_modal);
 
-var _size = __webpack_require__(7);
+var _size = __webpack_require__(10);
 
 var _size2 = _interopRequireDefault(_size);
 
-var _hello = __webpack_require__(8);
+var _hello = __webpack_require__(11);
 
 var _hello2 = _interopRequireDefault(_hello);
 
-var _slides = __webpack_require__(9);
+var _slides = __webpack_require__(12);
 
 var _slides2 = _interopRequireDefault(_slides);
 
-var _run = __webpack_require__(10);
+var _run = __webpack_require__(13);
 
 var _run2 = _interopRequireDefault(_run);
 
@@ -124,7 +136,10 @@ var FRAMEWORK = FRAMEWORK || {};
   APP.methods = {
     render: _render2.default,
     components: _components2.default,
-    breakpoint: _breakpoint2.default
+    breakpoint: _breakpoint2.default,
+    resizestop: _resizestop2.default,
+    scrolldirection: _scrolldirection2.default,
+    scrollstop: _scrollstop2.default
   };
 
   APP.components = {
@@ -224,6 +239,95 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+exports.default = function (callback) {
+  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 66;
+
+  var isResizing;
+
+  window.addEventListener('resize', function () {
+    window.clearTimeout(isResizing);
+
+    isResizing = setTimeout(function () {
+      callback();
+    }, delay);
+  }, false);
+};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (up, down) {
+  var position = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  var scroll;
+
+  window.addEventListener('scroll', function () {
+    scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    if (scroll > position) {
+      if (typeof down === 'function' && down()) {
+        down();
+      }
+    } else {
+      if (typeof up === 'function' && up()) {
+        up();
+      }
+    }
+    position = scroll;
+  });
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (onStop) {
+  var onScroll = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 66;
+
+  var isScrolling;
+
+  window.addEventListener('scroll', function () {
+
+    if (typeof onScroll === 'function' && onScroll()) {
+      onScroll();
+    }
+
+    window.clearTimeout(isScrolling);
+
+    isScrolling = setTimeout(function () {
+      if (typeof onStop === 'function' && onStop()) {
+        onStop();
+      }
+    }, delay);
+  }, false);
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -281,7 +385,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 5 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -322,7 +426,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 6 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -382,7 +486,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 7 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -422,7 +526,7 @@ var _class = function () {
 exports.default = _class;
 
 /***/ }),
-/* 8 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -440,7 +544,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 9 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -460,7 +564,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 10 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -34,7 +34,23 @@ var gulp        = require('gulp'),
 
     gulp.task('image', ()=> {
       return gulp.src('./dev/img/**')
-        .pipe(imagemin())
+      .pipe(imagemin([
+        imagemin.svgo({
+            plugins: [
+                {
+                  addClassesToSVGElement: {
+                    classNames: ['svg']
+                  }
+                },
+                {
+                  removeViewBox: false
+                },
+                {
+                  removeDimensions: true
+                }
+            ]
+        })
+      ]))
         .pipe(gulp.dest('./build/img'));
     })
 
