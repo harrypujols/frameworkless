@@ -142,6 +142,11 @@
   height: 100px;
 }
 
+.svg-include svg {
+  width: 100%;
+  height: auto;
+}
+
 .modal {
   position: fixed;
   top: 0;

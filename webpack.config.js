@@ -1,18 +1,10 @@
+const path = require('path');
+
 module.exports = {
-  watch: true,
+  mode: "none",
+  entry: "./dev/js/index.js",
   output: {
-    filename: 'app.js'
-  },
-  module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['env']
-        }
-      }
-    }]
+    path: path.resolve(__dirname, './build/js'),
+    filename: 'scripts.js',
   }
 }
