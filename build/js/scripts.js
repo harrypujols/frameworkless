@@ -430,7 +430,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data : [
-    { title: 'Gulp JS', text: 'As principal task runner, with browser sync.'},
+    { title: 'NPM Scripts', text: 'As principal task runner.'},
     { title: 'Webpack', text: 'With Babel, as ES6 transpiler.'},
     { title: 'Sass', text: 'As the css pre-processor.'},
     { title: 'No libraries', text: 'No frameworks, just vanilla JS.'}
