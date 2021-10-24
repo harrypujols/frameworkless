@@ -1,10 +1,10 @@
-{% extends "layouts/page.html" %}
+{% extends "layouts/page.njk" %}
 {% block content %}
 <div class="container">
   <h1 data-js="size"></h1>
   <h2 data-js="render" data-template="hello"></h2>
   <div class="svg-include" data-js="include" data-file="img/suitcase.svg"></div>
-  {% include "includes/carousel.html" %}
-  {% include "includes/modal.html" %}
+  {% include "includes/carousel.njk" %}
+  {% include "includes/modal.njk" %}
 </div>
 {% endblock %}

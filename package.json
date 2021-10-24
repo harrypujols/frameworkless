@@ -7,7 +7,7 @@
     "start": "npm-run-all --parallel server html css js image watch:*",
     "css": "node-sass --output-style=expanded ./dev/sass/styles.scss ./build/css/styles.css",
     "js": "webpack --config webpack.config.js",
-    "html": "nunjucks *.html -p ./dev/templates -o ./build -O ./dev/data/data.json",
+    "html": "nunjucks *.njk -p ./dev/templates -o ./build -O ./dev/data/data.json",
     "image": "cp ./dev/img/** ./build/img/",
     "server": "browser-sync start --server ./build --files ./build",
     "watch:css": "onchange './dev/sass/**/**' -- npm run css",
