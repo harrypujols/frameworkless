@@ -1,6 +1,6 @@
-# Alchemy Sign
+# Frameworkless Framework
 
-A quick Web toy by Harry Pujols
+A rapid static site boilerplate using modern stuff
 
 ## To install
 
